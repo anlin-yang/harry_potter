@@ -1,3 +1,5 @@
+var BasketItem = require('./basket-item.js');
+
 function ShoppingBasket() {
   this.basketItems = [];
 }
@@ -10,10 +12,8 @@ ShoppingBasket.prototype.addItem = function(title, count) {
   if (existItems.length !== 0) {
     existItems[0].count += count;
   } else {
-    this.basketItems.push({
-      title: title,
-      count: count
-    });
+    var basketItem = new BasketItem(title, count);
+    this.basketItems.push(basketItem);
   }
 }
 
