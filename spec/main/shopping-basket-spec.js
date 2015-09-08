@@ -29,5 +29,13 @@ describe("ShoppingBasket", function() {
     });
   });
 
+  describe("getVarietyNum", function() {
+    it("should return correct variety number of books.", function() {
+      expect(theShoppingBasket.getVarietyNum()).toBe(5);
+      theShoppingBasket.basketItems[4].count--;
+      expect(theShoppingBasket.getVarietyNum()).toBe(4);
+    });
+  });
+
 
 });
