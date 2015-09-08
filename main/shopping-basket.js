@@ -17,4 +17,14 @@ ShoppingBasket.prototype.addItem = function(title, count) {
   }
 }
 
+ShoppingBasket.prototype.getVarietyNum = function() {
+  var varietyNum = 0;
+  this.basketItems.forEach(function(val) {
+    if (val.count !== 0) {
+      varietyNum++;
+    }
+  });
+  return varietyNum;
+}
+
 module.exports = ShoppingBasket;
