@@ -24,8 +24,14 @@ describe("DiscountItem", function() {
   });
 
   describe("getTotalPrice", function() {
-    it("should return correct total price of discount item.", function() {
+    it("should return the correct total price of discount item.", function() {
       expect(theDiscountItem.getTotalPrice()).toBe(24);
+    });
+  });
+
+  describe("getSubtotalPrice", function() {
+    it("should return the correct price after discount.", function() {
+      expect(theDiscountItem.getSubtotalPrice()).toBe(21.6);
     });
   });
 
