@@ -17,9 +17,10 @@ describe("BasketItem", function() {
   });
 
   describe("constructor", function() {
-    it("should accept title, conut as parameters to create Object.", function() {
+    it("should accept title, conut as parameters to create Object.should include Book object.", function() {
       expect(theBasketItem.title).toBe('1st');
       expect(theBasketItem.count).toBe(2);
+      expect(theBasketItem.book.price).toBe(8);
     });
   });
 
