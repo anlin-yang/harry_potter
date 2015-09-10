@@ -6,6 +6,7 @@ var discStrategys = [];
 
 function ShoppingBasket() {
   this.basketItems = [];
+  this.allGroupingWays = [];
 }
 
 ShoppingBasket.setDiscStrategys = function(discStrategyArr) {
@@ -24,9 +25,9 @@ ShoppingBasket.prototype.addItem = function(title, count) {
   }
 };
 
-ShoppingBasket.prototype.getVarietyNum = function() {
+ShoppingBasket.prototype.getVarietyNum = function(basketItems) {
   var varietyNum = 0;
-  this.basketItems.forEach(function(val) {
+  basketItems.forEach(function(val) {
     if (val.count !== 0) {
       varietyNum++;
     }
@@ -53,6 +54,7 @@ ShoppingBasket.prototype.getDiscountItem = function(basketItems, varietyNum) {
 
 ShoppingBasket.prototype.getGroupingWay = function(basketItems, varietyNum, groupNum) {
   var groupingWay = new GroupingWay();
+
   while (varietyNum > 0) {
     var discountItem = this.getDiscountItem(basketItems, varietyNum);
     groupingWay.groupingItems.push(discountItem);
@@ -63,6 +65,19 @@ ShoppingBasket.prototype.getGroupingWay = function(basketItems, varietyNum, grou
   return groupingWay;
 };
 
+ShoppingBasket.prototype.groupingAllWay = function() {
+  var varietyNum = this.getVarietyNum(this.basketItems);
+  var copyBasketItems = _.cloneDeep(this.basketItems);
+  var groupNum = varietyNum;
+
+  while (groupNum > 1) {
+    varietyNum = groupNum;
+    var groupingWay = this.getGroupingWay(copyBasketItems, varietyNum, groupNum);
+    copyBasketItems = _.cloneDeep(this.basketItems);
+    this.allGroupingWays.push(groupingWay);
+    --groupNum;
+  }
+};
 
 
 module.exports = ShoppingBasket;
