@@ -5,6 +5,7 @@ var DiscountStrategy = require('../../main/discount-strategy.js');
 
 describe("GroupingWay", function() {
   var theGroupingWay;
+
   beforeEach(function() {
     theGroupingWay = new GroupingWay();
 
@@ -43,4 +44,11 @@ describe("GroupingWay", function() {
       expect(theGroupingWay.getTotalPrice()).toBe(64);
     });
   });
+
+  describe("getSubtotalPrice", function() {
+    it("should return the correct subtotal price of grouping way after discount.", function() {
+      expect(theGroupingWay.getSubtotalPrice()).toBe(51.6);
+    });
+  });
+
 });
