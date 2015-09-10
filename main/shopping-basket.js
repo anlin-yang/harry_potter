@@ -79,5 +79,18 @@ ShoppingBasket.prototype.groupingAllWay = function() {
   }
 };
 
+ShoppingBasket.prototype.getBestPrice = function() {
+  var bestPrice = 0;
+  if (this.allGroupingWays.length > 0) {
+    var subtotal = this.allGroupingWays[0].getSubtotalPrice();
+    bestPrice = subtotal;
+    this.allGroupingWays.forEach(function(val) {
+      subtotal = val.getSubtotalPrice();
+      bestPrice = bestPrice < subtotal ? bestPrice : subtotal;
+    });
+  }
+
+  return bestPrice;
+};
 
 module.exports = ShoppingBasket;
