@@ -9,16 +9,23 @@ describe("DiscountItem", function() {
     var discountItems = [
       new BasketItem('1st', 2),
       new BasketItem('2nd', 1),
-      new BasketItem('3rd', 3),
+      new BasketItem('3rd', 3)
     ];
 
     theDiscountItem = new DiscountItem(theDiscountStrategy);
-    theDiscountItem.discItem = discountItems;
+    theDiscountItem.discItems = discountItems;
   });
 
   describe("conctructor", function() {
     it("should accept discountStrategy as parameter and include Array discItems.", function() {
       expect(theDiscountItem.discItems instanceof Array).toBe(true);
+      expect(theDiscountItem.discItems.length).toBe(3);
+    });
+  });
+
+  describe("getTotalPrice", function() {
+    it("should return correct total price of discount item.", function() {
+      expect(theDiscountItem.getTotalPrice()).toBe(24);
     });
   });
 
