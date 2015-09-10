@@ -56,4 +56,14 @@ describe("ShoppingBasket", function() {
     });
   });
 
+  describe("getGroupingWay", function() {
+    it("should accept basketItems, varietyNum, groupNum as parameters to create GroupingWay.", function() {
+      var groupingWay = theShoppingBasket.getGroupingWay(theShoppingBasket.basketItems, 5, 5);
+      expect(groupingWay.groupingItems instanceof Array).toBe(true);
+      expect(groupingWay.groupingItems.length).toBe(2);
+      expect(groupingWay.groupingItems[0].getSubtotalPrice()).toBe(30);
+      expect(groupingWay.groupingItems[1].getSubtotalPrice()).toBe(21.6);
+    });
+  });
+
 });
