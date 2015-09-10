@@ -74,4 +74,11 @@ describe("ShoppingBasket", function() {
     });
   });
 
+  describe("getBestPrice", function() {
+    it("should return The cheapest price from all grouping ways.", function() {
+      shopBasket.groupingAllWay();
+      expect(shopBasket.getBestPrice()).toBe(51.2);
+    });
+  });
+
 });
