@@ -1,3 +1,4 @@
+var _ = require('lodash');
 var BasketItem = require('./basket-item.js');
 var DiscountItem = require('./discount-item.js');
 var GroupingWay = require('./grouping-way.js');
