@@ -1,4 +1,5 @@
 var BasketItem = require('./basket-item.js');
+var DiscountItem = require('./discount-item.js');
 var discStrategys = [];
 
 function ShoppingBasket() {
@@ -29,6 +30,22 @@ ShoppingBasket.prototype.getVarietyNum = function() {
     }
   });
   return varietyNum;
+};
+
+ShoppingBasket.prototype.getDiscountItem = function(basketItems, varietyNum) {
+  var discountItem = new DiscountItem();
+  var discountStrategy = discStrategys.filter(function(val) {
+    return val.variety === varietyNum;
+  });
+  discountItem.discountStrategy = discountStrategy[0];
+  basketItems.forEach(function(val) {
+    if (val.count !== 0 && varietyNum > 0) {
+      discountItem.discItems.push(val);
+      val.count--;
+      varietyNum--;
+    }
+  });
+  return discountItem;
 };
 
 module.exports = ShoppingBasket;
