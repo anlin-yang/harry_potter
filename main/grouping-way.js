@@ -11,4 +11,13 @@ GroupingWay.prototype.getTotalPrice = function() {
   return totalPrice;
 };
 
+GroupingWay.prototype.getSubtotalPrice = function() {
+  var subtotalPrice = 0;
+  this.groupingItems.forEach(function(val) {
+    subtotalPrice += val.getSubtotalPrice();
+  });
+
+  return subtotalPrice;
+};
+
 module.exports = GroupingWay;
