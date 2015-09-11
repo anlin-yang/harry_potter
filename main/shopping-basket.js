@@ -41,7 +41,7 @@ ShoppingBasket.prototype.getDiscountItem = function(basketItems, varietyNum) {
   var discountStrategy = discStrategys.filter(function(val) {
     return val.variety === varietyNum;
   });
-  discountItem.discountStrategy = discountStrategy[0];
+  discountItem.discountStrategy = discountStrategy[0];//这不就是个find
   basketItems.forEach(function(val) {
     if (val.count !== 0 && varietyNum > 0) {
       discountItem.discItems.push(val);
@@ -55,7 +55,7 @@ ShoppingBasket.prototype.getDiscountItem = function(basketItems, varietyNum) {
 ShoppingBasket.prototype.getGroupingWay = function(basketItems, varietyNum, groupNum) {
   var groupingWay = new GroupingWay();
 
-  while (varietyNum > 0) {
+  while (varietyNum > 0) {//varietyNum传来传去的，必要的时候应该换个名字，更清楚表达含义
     var discountItem = this.getDiscountItem(basketItems, varietyNum);
     groupingWay.groupingItems.push(discountItem);
     var surplusVarietyNum = this.getVarietyNum(basketItems);
@@ -68,13 +68,14 @@ ShoppingBasket.prototype.getGroupingWay = function(basketItems, varietyNum, grou
 ShoppingBasket.prototype.groupingAllWay = function() {
   var varietyNum = this.getVarietyNum(this.basketItems);
   var copyBasketItems = _.cloneDeep(this.basketItems);
-  var groupNum = varietyNum;
+  var groupNum = varietyNum;//为什么varietyNumber就是groupNum？
 
-  while (groupNum > 1) {
-    varietyNum = groupNum;
+  while (groupNum > 1) {//为什么要循环最大的不同本数？
+    varietyNum = groupNum;//为什么又赋值回去了？就不能换个变量名？
     var groupingWay = this.getGroupingWay(copyBasketItems, varietyNum, groupNum);
     copyBasketItems = _.cloneDeep(this.basketItems);
     this.allGroupingWays.push(groupingWay);
+
     --groupNum;
   }
 };
