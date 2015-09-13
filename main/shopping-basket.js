@@ -54,7 +54,7 @@ ShoppingBasket.prototype.getDiscountItem = function(basketItems, varietyNum) {
 ShoppingBasket.prototype.getGroupingWay = function(basketItems, varietyNum, groupNum) {
   var groupingWay = new GroupingWay();
 
-  while (varietyNum > 0) { //varietyNum传来传去的，必要的时候应该换个名字，更清楚表达含义
+  while (varietyNum > 0) {
     var discountItem = this.getDiscountItem(basketItems, varietyNum);
     groupingWay.groupingItems.push(discountItem);
     var surplusVarietyNum = this.getVarietyNum(basketItems);
@@ -67,15 +67,15 @@ ShoppingBasket.prototype.getGroupingWay = function(basketItems, varietyNum, grou
 ShoppingBasket.prototype.groupingAllWay = function() {
   var varietyNum = this.getVarietyNum(this.basketItems);
   var copyBasketItems = _.cloneDeep(this.basketItems);
-  var groupNum = varietyNum; //为什么varietyNumber就是groupNum？
+  var groupingCondition = varietyNum;
 
-  while (groupNum > 1) { //为什么要循环最大的不同本数？
-    varietyNum = groupNum; //为什么又赋值回去了？就不能换个变量名？
-    var groupingWay = this.getGroupingWay(copyBasketItems, varietyNum, groupNum);
+  while (groupingCondition > 1) {
+    var groupVarietyNum = groupingCondition;
+    var groupingWay = this.getGroupingWay(copyBasketItems, groupVarietyNum, groupingCondition);
     copyBasketItems = _.cloneDeep(this.basketItems);
     this.allGroupingWays.push(groupingWay);
 
-    --groupNum;
+    --groupingCondition;
   }
 };
 
