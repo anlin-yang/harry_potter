@@ -50,8 +50,8 @@ describe("ShoppingBasket", function() {
   describe("getDiscountItem", function() {
     it("should accept basketItems, varietyNum as parameters to create object DiscountItem.", function() {
       var discItem = shopBasket.getDiscountItem(shopBasket.basketItems, 5);
-      expect(discItem.discItems instanceof Array).toBe(true);
-      expect(discItem.discItems.length).toBe(5);
+      expect(discItem.itemList instanceof Array).toBe(true);
+      expect(discItem.itemList.length).toBe(5);
       expect(discItem.discountStrategy.discount).toBe(0.25);
     });
   });

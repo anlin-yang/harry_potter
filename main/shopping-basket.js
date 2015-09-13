@@ -43,7 +43,7 @@ ShoppingBasket.prototype.getDiscountItem = function(basketItems, varietyNum) {
   });
   basketItems.forEach(function(val) {
     if (val.count !== 0 && varietyNum > 0) {
-      discountItem.discItems.push(val);
+      discountItem.itemList.push(val);
       val.count--;
       varietyNum--;
     }

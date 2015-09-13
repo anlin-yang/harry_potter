@@ -13,13 +13,13 @@ describe("DiscountItem", function() {
     ];
 
     theDiscountItem = new DiscountItem(theDiscountStrategy);
-    theDiscountItem.discItems = discountItems;
+    theDiscountItem.itemList = discountItems;
   });
 
   describe("conctructor", function() {
-    it("should accept discountStrategy as parameter and include Array discItems.", function() {
-      expect(theDiscountItem.discItems instanceof Array).toBe(true);
-      expect(theDiscountItem.discItems.length).toBe(3);
+    it("should accept discountStrategy as parameter and include Array itemList.", function() {
+      expect(theDiscountItem.itemList instanceof Array).toBe(true);
+      expect(theDiscountItem.itemList.length).toBe(3);
     });
   });
 

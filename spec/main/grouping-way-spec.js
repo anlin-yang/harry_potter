@@ -16,7 +16,7 @@ describe("GroupingWay", function() {
       new BasketItem('3rd', 1)
     ];
     var discItem1 = new DiscountItem(discStrategy1);
-    discItem1.discItems = discItems1;
+    discItem1.itemList = discItems1;
 
     var discStrategy2 = new DiscountStrategy("BUY_FIVE_DIFFERENT_BOOKS_GET_25%_DISCOUNT.", 5, 0.25);
     var discItems2 = [
@@ -27,7 +27,7 @@ describe("GroupingWay", function() {
       new BasketItem('5th', 1)
     ];
     var discItem2 = new DiscountItem(discStrategy2);
-    discItem2.discItems = discItems2;
+    discItem2.itemList = discItems2;
 
     theGroupingWay.groupingItems.push(discItem1);
     theGroupingWay.groupingItems.push(discItem2);

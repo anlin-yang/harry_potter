@@ -1,11 +1,11 @@
 function DiscountItem(discountStrategy) {
   this.discountStrategy = discountStrategy;
-  this.discItems = [];
+  this.itemList = [];
 }
 
 DiscountItem.prototype.getTotalPrice = function() {
   var totalPrice = 0;
-  this.discItems.forEach(function(val) {
+  this.itemList.forEach(function(val) {
     totalPrice += 8;
   });
 
@@ -15,7 +15,7 @@ DiscountItem.prototype.getTotalPrice = function() {
 DiscountItem.prototype.getSubtotalPrice = function() {
   var discountPrice = 0;
   var that = this;
-  this.discItems.forEach(function(val) {
+  this.itemList.forEach(function(val) {
     discountPrice += 8 * that.discountStrategy.discount;
   });
 
